@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la télévision{% endblock %}
+
+{% block body %}
+<h1>Modifier la télévision</h1>
+
+{{ form_start(form) }}
+    {{ form_row(form.Titre) }}
+    {{ form_row(form.Description) }}
+    {{ form_row(form.Couleur) }}
+    {{ form_row(form.Nom_fab) }}
+    {{ form_row(form.Diagonale) }}
+    {{ form_row(form.Dimensions) }}
+    {{ form_row(form.Poids) }}
+    {{ form_row(form.Marques) }}
+    <button class="btn">Mettre à jour</button>
+{{ form_end(form) }}
+
+{% endblock %}

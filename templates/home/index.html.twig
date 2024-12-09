@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<h1>Liste des Marques</h1>
+
+<a href="{{ path('marques_new') }}">Créer une nouvelle Marque</a>
+
+<ul>
+    {% for marque in marques %}
+        <li>
+            <strong>{{ marque.titre }}</strong> : {{ marque.description }}
+            <a href="{{ path('marques_edit', {'titre': marque.titre}) }}">Modifier</a>
+            
+            <form method="post" action="{{ path('marques_delete', {'titre': marque.titre}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ marque.titre) }}">
+                <button type="submit">Supprimer</button>
+            </form>
+        </li>
+    {% else %}
+        <li>Aucune marque trouvée.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
